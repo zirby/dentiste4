@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+        Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>GCD</title>
+        <meta name="description" content="" />
+        <meta name="author" content="CAPella - Ch. Zirbes" />
+        <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+        
+        <link rel="stylesheet" type="text/css" href="css/easyui.css">
+        <link rel="stylesheet" type="text/css" href="css/icon.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        
+        <script type="text/javascript" src="js/libs/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="js/libs/jquery.easyui.min.js"></script>
+        <script type="text/javascript" src="js/events.js"></script>
+    </head>
+    <body>
+    <div id="main">
+        <header>
+            <h2>Gestion Cabinet Dentaire</h2>
+            <div id="author">Ch. ZIRBES</div>
+        </header>
+        <div id="tt" class="easyui-tabs" style="height:750px;width: 900px">  
+            <div title="Recherche" iconCls="icon-search" style="padding:5px;">  
+            <table id="dgPatients" title="Liste des patients" class="easyui-datagrid" style="height:auto;"
+                    url="php/get_patients.php"
+                    toolbar="#tlbPatients"
+                    fitColumns="true" singleSelect="true">
+                <thead>
+                    <tr>
+                        <th field="sis" width="17"  >SIS</th>
+                        <th field="nom" width="17" sortable="true" >Nom</th>
+                        <th field="prenom" width="17" sortable="true">Prénom</th>
+                        <th field="commune" width="17" sortable="true" >Loalité</th>
+                        <th field="tel_fixe"  width="17" sortable="true" align="right" >Tel.</th>
+                        <th field="tel_gsm" width="17" align="right">GSM</th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="tlbPatients">
+            	<a id="btnAddPatient" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">ajouter un patient</a>
+                Nom: <input id="txtNom" type="text" >Prénom: <input id="txtPrenom" type="text" >Téléphone: <input id="txtTel" type="text" >
+                <a href="http://localhost/denta_admin2/" id="btnAdmin" href="#" class="easyui-linkbutton" iconCls="icon-tip" plain="true">Admin</a>
+            </div>
+        	</div> <!-- fin tab Recherche --> 
+            <div title="Patient" iconCls="icon-medecin" style="padding:5px;">  
+            <div id="pPatient" class="easyui-panel" title="Signalétique" style="width:auto;height:auto;padding:5px;">
+            	<form>
+        		<table style="width:100%" border="0">
+        			<tr>
+        				<td align="right">SIS:</td>
+        				<td><input type="text"  size="14"/></td>
+        				<td align="right">Age:</td>
+        				<td><input type="text"  size="10"/></td>
+        				<td rowspan="7" valign="middle" align="center"><img src="./css/images/unknown_140.jpg" /></td>
+        			</tr>
+        			<tr>
+        				<td align="right">Nom:</td>
+        				<td><input type="text"  size="30"/></td>
+        				<td align="right">Prénom:</td>
+        				<td><input type="text"  size="30"/></td>
+        			</tr>
+        			<tr>
+        				<td align="right">Prénom++:</td>
+        				<td><input type="text"  size="30"/></td>
+        				<td align="right">Nationalité:</td>
+        				<td><input type="text"  size="30"/></td>
+        			</tr>
+        			<tr>
+        				<td align="right">Date Naiss.:</td>
+        				<td><input type="text" size="30" /></td>
+        				<td align="right">Lieu Naiss.:</td>
+        				<td><input type="text" size="30" /></td>
+        			</tr>
+        			<tr>
+        				<td align="right">Adresse:</td>
+        				<td colspan="3"><input type="text" size="62"/></td>
+         			</tr>
+        			<tr>
+        				<td align="right">CP.:</td>
+        				<td><input type="text" size="30" /></td>
+        				<td>Commune:</td>
+        				<td><input type="text" size="30" /></td>
+        			</tr>
+        			<tr>
+        				<td align="right">Tél. Fixe:</td>
+        				<td><input type="text" size="30" /></td>
+        				<td align="right">Tél.gsm:</td>
+        				<td><input type="text" size="30" /></td>
+        			</tr>
+        			<tr>
+        				<td align="right">Notes:</td>
+        				<td colspan="4"><textarea name="txtNotes" rows="4" cols="100%" ></textarea></td>
+        			</tr>
+        			<tr>
+        				<td align="right">Médication:</td>
+        				<td colspan="4"><textarea name="txtNotes" rows="4" cols="100%" ></textarea></td>
+        			</tr>        			
+        			<tr>
+        				<td align="right" colspan="5"><a id="btnEditPatient" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">Enregistrer</a></td>
+        			</tr>        			
+        		</table>
+        		</form>
+		    </div>
+    		</div> <!-- fin tab Patient -->            
+    		<div title="Soins" iconCls="icon-info" style="padding:5px;">  
+            <div id="pSoin" class="easyui-panel" title="Soin" style="width:auto;height:320px;padding:5px;">
+			  <table width="100%" border="0" cellpadding="3" cellspacing="0">
+			 <tr>
+			    <td align="right">Date: </td>
+			    <td><input name="txts_date" type="text" size="10" /></td>
+			    <td align="right">Inami: </td>
+			    <td><input type="text" name="txtinami_id"  size="30" /></td>
+			    <td align="right">Dent/Proth&#232;se: </td>
+			    <td align="right"><input type="text" name="txts_dent"  size="10" /></td>
+			  </tr>
+			  <tr>
+			    <td align="right">Honoraire: </td>
+			    <td><input name="txts_hono" align="right" type="text"  size="5" /> &#8364;</td>
+			    <td align="right">Mode: </td>
+			    <td colspan="3" align="left">
+			    	<input type="radio" name="txts_pay" value="E" />Esp&#232;ce
+			       	<input type="radio" name="txts_pay" value="V" />Virement
+			    </td>
+			  </tr>
+			  <tr>
+			  	<td align="right">Dentiste:</td>
+			  	<TD colspan="3">
+					<input type="radio" name="txts_dentiste" value="F" />Fagnoul
+			       	<input type="radio" name="txts_dentiste" value="Z" />Zirbes
+				</TD>
+			    <td align="right">ASD: </td>
+			    <td align="right" ><input name="txts_asd" align="right" type="text" size="10" /></td>
+			  </tr>
+			  <tr>
+			  <td align="right" valign="top">Notes: </td>
+			  <td colspan="5"><textarea  name="txts_rem" rows="4" cols="100%" ></textarea></td>
+			  </tr>
+			  <tr>
+			  <td align="right" valign="top">Prescr: </td>
+			  <td colspan="5"><textarea name="txts_medic" rows="4" cols="100%" ></textarea></td>
+			  </tr>
+        			<tr>
+        				<td align="right" colspan="6"><a id="btnEditSoin" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">Enregistrer</a></td>
+        			</tr>        			
+			</table>
+		    </div>
+		    <table id="dgSoins" title="Liste des soins" class="easyui-datagrid"  style="height:auto;"
+                    url="php/get_soins.php"
+                    toolbar="#tlbSoins"
+                    fitColumns="true" singleSelect="true"
+                    showfooter="true"
+                    pageSize="20">
+                <thead>
+                    <tr>
+                        <th field="id" width="10" >ID</th>
+                        <th field="s_date" width="10" sortable="true" >Date</th>
+                        <th field="inami_id" width="10" sortable="true">INAMI</th>
+                        <th field="s_dent" width="10" sortable="true" >Dent</th>
+                        <th field="s_rem" width="50"  >Remarques</th>
+                        <th field="s_asd" width="10" align="right">ASD</th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="tlbSoins">
+                <a id="btnAddSoins" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">Ajouter un soin</a>
+                <a id="btnEditSoins" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Editer un soin</a>
+                <a id="btnDeleteSoins" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Supprimer un soin</a>
+            </div>
+    		</div> <!-- fin tab Soins -->
+        </div>
+        <div id="dlgVirements" class="easyui-dialog" style="width:280px;height:350px;padding:10px"
+                closed="true" >
+            <div class="ftitle">Virement payé</div>
+            <form id="fm" method="post" novalidate>
+                <div class="fitem">
+                    <label>Date du paiement :</label>
+                    <div id="cc" style="width:180px;height:180px;"></div>
+                    <br /> 
+                    <a id="btnNonPaye" href="#" class="easyui-linkbutton" iconCls="icon-no">Non Payé</a> 
+                </div>
+            </form>
+        </div>
+
+        <footer>
+            <p>GCD-4.0 -2012 - &copy; Copyright  by CAPella - Ch. ZIRBES</p>
+        </footer>
+        
+    </div>
+    </body>
+</html>
