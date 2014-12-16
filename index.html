@@ -48,49 +48,49 @@
             </div>
         	</div> <!-- fin tab Recherche --> 
             <div title="Patient" iconCls="icon-medecin" style="padding:5px;">  
-            <div id="pPatient" class="easyui-panel" title="Signalétique" style="width:auto;height:auto;padding:5px;">
-            	<form>
+            <div id="pPatient" class="easyui-panel" title="Signalétique" style="width:878px;height:auto;padding:5px;">
+            	<form id="frmPatient" method="post">
         		<table style="width:100%" border="0">
         			<tr>
         				<td align="right">SIS:</td>
-        				<td><input type="text"  size="14"/></td>
+        				<td><input type="text" name="sis"  size="14"/></td>
         				<td align="right">Age:</td>
-        				<td><input type="text"  size="10"/></td>
+        				<td><input type="text" name="age"  size="10"/></td>
         				<td rowspan="7" valign="middle" align="center"><img src="./css/images/unknown_140.jpg" /></td>
         			</tr>
         			<tr>
         				<td align="right">Nom:</td>
-        				<td><input type="text"  size="30"/></td>
+        				<td><input type="text" name="nom"  size="30"/></td>
         				<td align="right">Prénom:</td>
-        				<td><input type="text"  size="30"/></td>
+        				<td><input type="text" name="prenom"  size="30"/></td>
         			</tr>
         			<tr>
         				<td align="right">Prénom++:</td>
-        				<td><input type="text"  size="30"/></td>
+        				<td><input type="text" name="prenomplus"  size="30"/></td>
         				<td align="right">Nationalité:</td>
-        				<td><input type="text"  size="30"/></td>
+        				<td><input type="text" name="nationalite"  size="30"/></td>
         			</tr>
         			<tr>
         				<td align="right">Date Naiss.:</td>
-        				<td><input type="text" size="30" /></td>
+        				<td><input type="text" name="date_naiss" size="30" /></td>
         				<td align="right">Lieu Naiss.:</td>
-        				<td><input type="text" size="30" /></td>
+        				<td><input type="text" name="lieu_naiss" size="30" /></td>
         			</tr>
         			<tr>
         				<td align="right">Adresse:</td>
-        				<td colspan="3"><input type="text" size="62"/></td>
+        				<td colspan="3"><input type="text" name="adresse" size="62"/></td>
          			</tr>
         			<tr>
         				<td align="right">CP.:</td>
-        				<td><input type="text" size="30" /></td>
+        				<td><input type="text" name="cp" size="30" /></td>
         				<td>Commune:</td>
-        				<td><input type="text" size="30" /></td>
+        				<td><input type="text" name="commune" size="30" /></td>
         			</tr>
         			<tr>
         				<td align="right">Tél. Fixe:</td>
-        				<td><input type="text" size="30" /></td>
+        				<td><input type="text" name="tel_fixe" size="30" /></td>
         				<td align="right">Tél.gsm:</td>
-        				<td><input type="text" size="30" /></td>
+        				<td><input type="text" name="tel_gsm" size="30" /></td>
         			</tr>
         			<tr>
         				<td align="right">Notes:</td>
@@ -98,7 +98,7 @@
         			</tr>
         			<tr>
         				<td align="right">Médication:</td>
-        				<td colspan="4"><textarea name="txtNotes" rows="4" cols="100%" ></textarea></td>
+        				<td colspan="4"><textarea name="txtMedic" rows="4" cols="100%" ></textarea></td>
         			</tr>        			
         			<tr>
         				<td align="right" colspan="5"><a id="btnEditPatient" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">Enregistrer</a></td>
@@ -108,53 +108,53 @@
 		    </div>
     		</div> <!-- fin tab Patient -->            
     		<div title="Soins" iconCls="icon-info" style="padding:5px;">  
-            <div id="pSoin" class="easyui-panel" title="Soin" style="width:auto;height:320px;padding:5px;">
+            <div id="pSoin" class="easyui-panel" title="Soin" style="width:878px;   height:320px;padding:5px;">
+            <form id="frmSoin">
 			  <table width="100%" border="0" cellpadding="3" cellspacing="0">
 			 <tr>
 			    <td align="right">Date: </td>
-			    <td><input name="txts_date" type="text" size="10" /></td>
+			    <td><input name="s_date" type="text" size="10" /></td>
 			    <td align="right">Inami: </td>
-			    <td><input type="text" name="txtinami_id"  size="30" /></td>
+			    <td><input type="text" name="inami_id"  size="30" /></td>
 			    <td align="right">Dent/Proth&#232;se: </td>
-			    <td align="right"><input type="text" name="txts_dent"  size="10" /></td>
+			    <td align="right"><input type="text" name="s_dent"  size="10" /></td>
 			  </tr>
 			  <tr>
 			    <td align="right">Honoraire: </td>
-			    <td><input name="txts_hono" align="right" type="text"  size="5" /> &#8364;</td>
+			    <td><input name="s_hono" align="right" type="text"  size="5" /> &#8364;</td>
 			    <td align="right">Mode: </td>
 			    <td colspan="3" align="left">
-			    	<input type="radio" name="txts_pay" value="E" />Esp&#232;ce
-			       	<input type="radio" name="txts_pay" value="V" />Virement
+			    	<input type="radio" name="s_pay" value="E" />Esp&#232;ce
+			       	<input type="radio" name="s_pay" value="V" />Virement
 			    </td>
 			  </tr>
 			  <tr>
 			  	<td align="right">Dentiste:</td>
 			  	<TD colspan="3">
-					<input type="radio" name="txts_dentiste" value="F" />Fagnoul
-			       	<input type="radio" name="txts_dentiste" value="Z" />Zirbes
+					<input type="radio" name="s_dentiste" value="F" />Fagnoul
+			       	<input type="radio" name="s_dentiste" value="Z" />Zirbes
 				</TD>
 			    <td align="right">ASD: </td>
-			    <td align="right" ><input name="txts_asd" align="right" type="text" size="10" /></td>
+			    <td align="right" ><input name="s_asd" align="right" type="text" size="10" /></td>
 			  </tr>
 			  <tr>
 			  <td align="right" valign="top">Notes: </td>
-			  <td colspan="5"><textarea  name="txts_rem" rows="4" cols="100%" ></textarea></td>
+			  <td colspan="5"><textarea  name="s_rem" rows="4" cols="100%" ></textarea></td>
 			  </tr>
 			  <tr>
 			  <td align="right" valign="top">Prescr: </td>
-			  <td colspan="5"><textarea name="txts_medic" rows="4" cols="100%" ></textarea></td>
+			  <td colspan="5"><textarea name="s_medic" rows="4" cols="100%" ></textarea></td>
 			  </tr>
         			<tr>
         				<td align="right" colspan="6"><a id="btnEditSoin" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">Enregistrer</a></td>
         			</tr>        			
 			</table>
 		    </div>
-		    <table id="dgSoins" title="Liste des soins" class="easyui-datagrid"  style="height:auto;"
+		    <table id="dgSoins" title="Liste des soins" class="easyui-datagrid"  style="width:878px;height:auto;"
                     url="php/get_soins.php"
                     toolbar="#tlbSoins"
                     fitColumns="true" singleSelect="true"
-                    showfooter="true"
-                    pageSize="20">
+                    >
                 <thead>
                     <tr>
                         <th field="id" width="10" >ID</th>
@@ -168,7 +168,6 @@
             </table>
             <div id="tlbSoins">
                 <a id="btnAddSoins" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">Ajouter un soin</a>
-                <a id="btnEditSoins" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Editer un soin</a>
                 <a id="btnDeleteSoins" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Supprimer un soin</a>
             </div>
     		</div> <!-- fin tab Soins -->
@@ -176,7 +175,7 @@
         <div id="dlgVirements" class="easyui-dialog" style="width:280px;height:350px;padding:10px"
                 closed="true" >
             <div class="ftitle">Virement payé</div>
-            <form id="fm" method="post" novalidate>
+            <form id="frm" method="post" novalidate>
                 <div class="fitem">
                     <label>Date du paiement :</label>
                     <div id="cc" style="width:180px;height:180px;"></div>

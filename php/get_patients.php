@@ -33,7 +33,7 @@
 	    }           
     $where=" and nom like 'dub%'";
     
-    $sql = "SELECT SIS, nom, prenom, commune, tel_fixe, tel_gsm FROM `patients`  WHERE 1=1 ".$where." order by ".$sort." ".$order; 
+    $sql = "SELECT * FROM `patients`  WHERE 1=1 ".$where." order by ".$sort." ".$order; 
     $rs = mysql_query($sql);
     //echo $sql;
     $items = array();
@@ -42,8 +42,17 @@
         $myrow = array('sis'=>$row->SIS,
                         'nom'=>utf8_encode($row->nom),
                         'prenom'=>utf8_encode($row->prenom),
+                        'adresse'=>utf8_encode($row->adresse),
+                        'cp'=>utf8_encode($row->cp),
                         'commune'=>utf8_encode($row->commune),
-                        'tel_fixe'=>$row->tel_fixe,
+                        'tel_fixe'=>utf8_encode($row->tel_fixe),
+                        'txtNotes'=>utf8_encode($row->notes),
+                        'txtMedic'=>utf8_encode($row->medic),
+                        'prenomplus'=>utf8_encode($row->prenomplus),
+                        'photo'=>$row->photo,
+                        'nationalite'=>utf8_encode($row->national),
+                        'date_naiss'=>utf8_encode($row->date_naiss),
+                        'lieu_naiss'=>utf8_encode($row->lieu_naiss),
                         'tel_gsm'=>$row->tel_gsm
                         );
         array_push($items, $myrow);
