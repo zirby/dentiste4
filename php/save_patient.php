@@ -1,4 +1,5 @@
 <?php
+
 $result = array();
 include 'conn.php';
 
@@ -34,22 +35,26 @@ $national = securite_bdd(utf8_decode($_POST['nationalite']));
 $date_naiss = securite_bdd(utf8_decode($_POST['date_naiss']));
 $lieu_naiss = securite_bdd(utf8_decode($_POST['lieu_naiss']));
 
-$sql="update `patients` set
-		`nom` = '$nom', 
-		`prenom` = '$prenom', 
-		`adresse` = '$adresse', 
-		`cp` = '$cp', 
-		`commune` = '$commune', 
-		`tel_fixe` = '$tel_fixe', 
-		`tel_gsm` = '$tel_gsm', 
-		`notes` = '$notes', 
-		`medic` = '$medic', 
-		`prenomplus` = '$prenomplus', 
-		`national` = '$national', 
-		`date_naiss` = '$date_naiss', 
-		`lieu_naiss` = '$lieu_naiss'
-	where SIS = $sis";
-//echo $sql;	
+$date_reserv=date("Y-m-d");
+
+$sql = "insert into `patients` (SIS, nom, prenom,adresse,cp,commune,tel_fixe,tel_gsm, notes, medic,prenomplus, national,date_naiss,lieu_naiss) 
+		values(
+			$sis, 
+			'$nom',
+			'$prenom',
+			'$adresse',
+			'$cp',
+			'$commune',
+			'$tel_fixe',
+			'$tel_gsm', 
+			'$notes',
+			'$medic',
+			'$prenomplus',
+			'$national',
+			'$date_naiss',
+			'$lieu_naiss'
+			)";
+	//echo $sql;	
 $rs = mysql_query($sql);
 if ($rs){
 	echo json_encode(array('success'=>true));

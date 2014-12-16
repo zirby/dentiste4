@@ -8,6 +8,7 @@ $(document).ready(function(){
 	$('#frmPatient').form('clear');
 	$('#frmSoin').form('clear');
 	
+	var url;
 /******************* search  ***********************/	
 	$("#txtNom").keypress(function(event){
 		$("#txtPrenom").val("");
@@ -45,6 +46,8 @@ $(document).ready(function(){
 				url:'php/get_soins.php?sis_id='+row.sis,
 			});
 			$('#frmSoin').form('clear');
+			$('#tt').tabs('select',1);
+			url='php/update_patient.php';
 		}
 	});
 
@@ -54,17 +57,25 @@ $(document).ready(function(){
 		}
 	});
 /******************* CRUD Patient  ***********************/
+	$('#btnAddPatient').click(function(){
+		$('#frmPatient').form('clear');
+		url = 'php/save_patient.php';
+		$('#tt').tabs('select',1);
+	});
+
+
 	$('#btnEditPatient').click(function(){
 		console.log("je sauve");
 		$('#frmPatient').form('submit',{
-			url: 'php/update_patient.php',
+			url: url,
 			onSubmit: function(){
 				console.log("je submit");
 				return $(this).form('validate');
 			},
 			success: function(result){
-				console.log(result.msg);
+				var result = eval('('+result+')');
 				if (result.success){
+					console.log("success");
 					$('#dgPatients').datagrid('reload');	// reload the user data
 				} 
 			},
