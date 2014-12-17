@@ -45,6 +45,7 @@ $(document).ready(function(){
 			$('#dgSoins').datagrid({
 				url:'php/get_soins.php?sis_id='+row.sis,
 			});
+			$('#pSoin').panel('setTitle',row.nom+" "+row.prenom+" - "+row.age+" ans");
 			$('#frmSoin').form('clear');
 			$('#tt').tabs('select',1);
 			url='php/update_patient.php';
@@ -54,6 +55,7 @@ $(document).ready(function(){
 	$('#dgSoins').datagrid({
 		onClickRow:function(index,row){
 			$('#frmSoin').form('load',row);
+			url='php/update_soin.php';
 		}
 	});
 /******************* CRUD Patient  ***********************/
@@ -77,6 +79,39 @@ $(document).ready(function(){
 				if (result.success){
 					console.log("success");
 					$('#dgPatients').datagrid('reload');	// reload the user data
+				} 
+			},
+			error: function(xhr, textStatus, errorThrown){
+				if (xhr.status==400){
+					alert(xhr.responseText);
+				} else {
+					alert("Une erreur est survenue lors de l'enregistrement : "+xhr.status+" - "+textStatus);
+				}
+			}
+
+		});
+	});
+
+/******************* CRUD Soin  ***********************/
+	$('#btnAddSoins').click(function(){
+		$('#frmSoin').form('clear');
+		url = 'php/save_soin.php';
+	});
+
+
+	$('#btnEditSoin').click(function(){
+		console.log("je sauve");
+		$('#frmSoin').form('submit',{
+			url: url,
+			onSubmit: function(){
+				console.log("je submit");
+				return $(this).form('validate');
+			},
+			success: function(result){
+				var result = eval('('+result+')');
+				if (result.success){
+					console.log("success");
+					$('#dgSoins').datagrid('reload');	// reload the user data
 				} 
 			},
 			error: function(xhr, textStatus, errorThrown){

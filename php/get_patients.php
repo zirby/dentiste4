@@ -40,6 +40,7 @@
     while($row = mysql_fetch_object($rs)){
         $myrow = array();
         $myrow = array('sis'=>$row->SIS,
+        				'age'=>sis2age($row->SIS),
                         'nom'=>utf8_encode($row->nom),
                         'prenom'=>utf8_encode($row->prenom),
                         'adresse'=>utf8_encode($row->adresse),
