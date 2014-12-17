@@ -7,8 +7,13 @@
 $(document).ready(function(){
 	$('#frmPatient').form('clear');
 	$('#frmSoin').form('clear');
-	
+	var date = new Date();console.log(date);
+	var y = date.getFullYear();
+	var m = date.getMonth() + 1;
+	var d = date.getDate();
+	var today=y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d) ;console.log(today);
 	var url;
+	var sis_id;
 /******************* search  ***********************/	
 	$("#txtNom").keypress(function(event){
 		$("#txtPrenom").val("");
@@ -55,6 +60,8 @@ $(document).ready(function(){
 	$('#dgSoins').datagrid({
 		onClickRow:function(index,row){
 			$('#frmSoin').form('load',row);
+			sis_id=row.sis_id;
+			console.log(sis_id);
 			url='php/update_soin.php';
 		}
 	});
@@ -95,6 +102,10 @@ $(document).ready(function(){
 /******************* CRUD Soin  ***********************/
 	$('#btnAddSoins').click(function(){
 		$('#frmSoin').form('clear');
+		$('#s_date').val(today);
+		$("input[type=radio][name=s_pay]").val('E');
+		$('#sis_id').val(sis_id);
+		
 		url = 'php/save_soin.php';
 	});
 
