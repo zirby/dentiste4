@@ -26,8 +26,6 @@ $inami_id = securite_bdd(utf8_decode($_POST['inami_id']));
 $s_rem = securite_bdd(utf8_decode($_POST['s_rem']));
 $s_hono = securite_bdd($_POST['s_hono']);
 $s_pay = securite_bdd(utf8_decode($_POST['s_pay']));
-$s_pay_le = securite_bdd($_POST['s_pay_le']);
-$s_coul = securite_bdd(utf8_decode($_POST['s_coul']));
 $s_dentiste = securite_bdd(utf8_decode($_POST['s_dentiste']));
 $s_asd = securite_bdd(utf8_decode($_POST['s_asd']));
 $s_medic = securite_bdd(utf8_decode($_POST['s_medic']));
@@ -35,7 +33,7 @@ $s_medic = securite_bdd(utf8_decode($_POST['s_medic']));
 
 $date_reserv=date("Y-m-d");
 
-$sql = "insert into `soins` (s_id, sis_id, s_date,s_dent,inami_id,s_rem,s_hono,s_pay, s_pay_le, s_coul,s_dentiste, s_asd,s_medic) 
+$sql = "insert into `soins` (s_id, sis_id, s_date,s_dent,inami_id,s_rem,s_hono,s_pay, s_dentiste, s_asd,s_medic) 
 		values(
 			null, 
 			$sis_id,
@@ -45,8 +43,6 @@ $sql = "insert into `soins` (s_id, sis_id, s_date,s_dent,inami_id,s_rem,s_hono,s
 			'$s_rem',
 			$s_hono,
 			'$s_pay', 
-			'$s_pay_le',
-			'$s_coul',
 			'$s_dentiste',
 			'$s_asd',
 			'$s_medic'

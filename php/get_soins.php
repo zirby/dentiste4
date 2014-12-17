@@ -18,7 +18,7 @@
     $items = array();
     while($row = mysql_fetch_object($rs)){
         $myrow = array();
-        $myrow = array('id'=>$row->s_id,
+        $myrow = array('s_id'=>$row->s_id,
         				'sis_id'=>$row->sis_id,
                         's_date'=>$row->s_date,
                         'inami_id'=>$row->inami_id,

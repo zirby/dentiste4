@@ -123,17 +123,21 @@
 			    <td align="right">Honoraire: </td>
 			    <td><input name="s_hono" align="right" type="text"  size="5" /> &#8364;</td>
 			    <td align="right">Mode: </td>
-			    <td colspan="3" align="left">
+			    <td align="left">
 			    	<input type="radio" name="s_pay" value="E" />Esp&#232;ce
 			       	<input type="radio" name="s_pay" value="V" />Virement
 			    </td>
+			    <td align="right">id: </td>
+			    <td><input name="s_id" align="right" type="text"  size="5" /></td>
 			  </tr>
 			  <tr>
 			  	<td align="right">Dentiste:</td>
-			  	<TD colspan="3">
+			  	<td>
 					<input type="radio" name="s_dentiste" value="F" />Fagnoul
 			       	<input type="radio" name="s_dentiste" value="Z" />Zirbes
-				</TD>
+				</td>
+			    <td align="right">sis: </td>
+			    <td><input name="sis_id" align="right" type="text"  size="15" /></td>
 			    <td align="right">ASD: </td>
 			    <td align="right" ><input name="s_asd" align="right" type="text" size="10" /></td>
 			  </tr>
@@ -157,9 +161,9 @@
                     >
                 <thead>
                     <tr>
-                        <th field="id" width="10" >ID</th>
+                        <th field="s_id" width="5" >ID</th>
                         <th field="s_date" width="10" sortable="true" >Date</th>
-                        <th field="inami_id" width="10" sortable="true">INAMI</th>
+                        <th field="inami_id" width="15" sortable="true">INAMI</th>
                         <th field="s_dent" width="10" sortable="true" >Dent</th>
                         <th field="s_rem" width="50"  >Remarques</th>
                         <th field="s_asd" width="10" align="right">ASD</th>

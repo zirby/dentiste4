@@ -17,7 +17,7 @@ function securite_bdd($string){
     return $string;
 }
 
-$s_id = $_POST['id'];
+$s_id = $_POST['s_id'];
 $sis_id = $_POST['sis'];
 $s_date = securite_bdd(utf8_decode($_POST['s_date']));
 $s_dent = securite_bdd(utf8_decode($_POST['s_dent']));
@@ -25,8 +25,6 @@ $inami_id = securite_bdd(utf8_decode($_POST['inami_id']));
 $s_rem = securite_bdd(utf8_decode($_POST['s_rem']));
 $s_hono = securite_bdd($_POST['s_hono']);
 $s_pay = securite_bdd(utf8_decode($_POST['s_pay']));
-$s_pay_le = securite_bdd($_POST['s_pay_le']);
-$s_coul = securite_bdd(utf8_decode($_POST['s_coul']));
 $s_dentiste = securite_bdd(utf8_decode($_POST['s_dentiste']));
 $s_asd = securite_bdd(utf8_decode($_POST['s_asd']));
 $s_medic = securite_bdd(utf8_decode($_POST['s_medic']));
@@ -39,8 +37,6 @@ $sql="update `soins` set
 		`s_rem` = '$s_rem', 
 		`s_hono` = $s_hono, 
 		`s_pay` = '$s_pay', 
-		`s_pay_le` = '$s_pay_le', 
-		`s_coul` = '$s_coul', 
 		`s_dentiste` = '$s_dentiste', 
 		`s_asd` = '$s_asd', 
 		`s_medic` = '$s_medic'
