@@ -31,7 +31,7 @@
 	    } else {
 	        $where.="";              
 	    }           
-    $where=" and nom like 'dub%'";
+    //$where=" and nom like 'dub%'";
     
     $sql = "SELECT * FROM `patients`  WHERE 1=1 ".$where." order by ".$sort." ".$order; 
     $rs = mysql_query($sql);

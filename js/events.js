@@ -54,14 +54,24 @@ $(document).ready(function(){
 			});
 			$('#pSoin').panel('setTitle',row.nom+" "+row.prenom+" - "+row.age+" ans");
 			$('#frmSoin').form('clear');
+			console.log(today);
 			$('#s_date').val(today);
 			$("input[name=s_pay]").val(['E']);
 			$("input[name=s_dentiste]").val(['Z']);
-			$('#sis_id').val(sis_id);		
+			console.log(sis_id);
+			$("input[name=sis_id]").val(sis_id);			
 			url = 'php/save_soin.php';
 			/* patient */
 			$('#tt').tabs('select',1);
-			url='php/update_patient.php';
+			//$('#td_photo').html("<img src='./css/images/unknown_140.jpg' />");
+			$.ajax({
+				"url": "php/get_photo.php?sis_id="+sis_id,
+				"type":"GET",
+				"success": function(data){
+					console.log(data);
+					$('#td_photo').html(data);
+			}
+		});			url='php/update_patient.php';
 		}
 	});
 
@@ -110,10 +120,12 @@ $(document).ready(function(){
 /******************* CRUD Soin  ***********************/
 	$('#btnAddSoins').click(function(){
 		$('#frmSoin').form('clear');
+		console.log(today);
 		$('#s_date').val(today);
 		$("input[name=s_pay]").val(['E']);
 		$("input[name=s_dentiste]").val(['Z']);
-		$('#sis_id').val(sis_id);		
+		console.log(sis_id);
+		$("input[name=sis_id]").val(sis_id);	
 		url = 'php/save_soin.php';
 	});
 
