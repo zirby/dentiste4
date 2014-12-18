@@ -46,12 +46,20 @@ $(document).ready(function(){
 	$('#dgPatients').datagrid({
 		onClickRow:function(index,row){
 			$('#frmPatient').form('load',row);
-			console.log(row.sis);
+			sis_id=row.sis;
+			
+			/* soins */
 			$('#dgSoins').datagrid({
 				url:'php/get_soins.php?sis_id='+row.sis,
 			});
 			$('#pSoin').panel('setTitle',row.nom+" "+row.prenom+" - "+row.age+" ans");
 			$('#frmSoin').form('clear');
+			$('#s_date').val(today);
+			$("input[name=s_pay]").val(['E']);
+			$("input[name=s_dentiste]").val(['Z']);
+			$('#sis_id').val(sis_id);		
+			url = 'php/save_soin.php';
+			/* patient */
 			$('#tt').tabs('select',1);
 			url='php/update_patient.php';
 		}
@@ -103,9 +111,9 @@ $(document).ready(function(){
 	$('#btnAddSoins').click(function(){
 		$('#frmSoin').form('clear');
 		$('#s_date').val(today);
-		$("input[type=radio][name=s_pay]").val('E');
-		$('#sis_id').val(sis_id);
-		
+		$("input[name=s_pay]").val(['E']);
+		$("input[name=s_dentiste]").val(['Z']);
+		$('#sis_id').val(sis_id);		
 		url = 'php/save_soin.php';
 	});
 
@@ -136,5 +144,17 @@ $(document).ready(function(){
 		});
 	});
 
+	$('#btnAsd').click(function(){
+		$.ajax({
+			"url": "php/get_asd.php?dentis="+$("input[name=s_dentiste]:checked").val(),
+			"type":"GET",
+			"success": function(data){
+				console.log(data);
+				$("input[name=s_asd]").val(data);
+			}
+		});
+	});
+
+	
 
 });

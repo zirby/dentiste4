@@ -19,7 +19,7 @@ function securite_bdd($string){
 }
 
 
-$sis_id = $_POST['sis'];
+$sis_id = $_POST['sis_id'];
 $s_date = securite_bdd(utf8_decode($_POST['s_date']));
 $s_dent = securite_bdd(utf8_decode($_POST['s_dent']));
 $inami_id = securite_bdd(utf8_decode($_POST['inami_id']));

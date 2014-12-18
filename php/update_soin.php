@@ -30,7 +30,7 @@ $s_asd = securite_bdd(utf8_decode($_POST['s_asd']));
 $s_medic = securite_bdd(utf8_decode($_POST['s_medic']));
 
 $sql="update `soins` set `sis_id` = $sis_id, `s_date` = '$s_date', `s_dent` = '$s_dent', `inami_id` = '$inami_id',`s_rem` = '$s_rem',`s_hono` = $s_hono,`s_pay` = '$s_pay', `s_dentiste` = '$s_dentiste', `s_asd` = '$s_asd',`s_medic` = '$s_medic'	where s_id = $s_id";
-echo $sql;	
+//echo $sql;	
 $rs = mysql_query($sql);
 if ($rs){
 	echo json_encode(array('success'=>true));

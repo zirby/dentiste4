@@ -10,11 +10,11 @@
         <meta name="author" content="CAPella - Ch. Zirbes" />
         <meta name="viewport" content="width=device-width; initial-scale=1.0" />
         
-        <link rel="stylesheet" type="text/css" href="css/easyui.css">
+        <link rel="stylesheet" type="text/css" href="css/default/easyui.css">
         <link rel="stylesheet" type="text/css" href="css/icon.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         
-        <script type="text/javascript" src="js/libs/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="js/libs/jquery.min.js"></script>
         <script type="text/javascript" src="js/libs/jquery.easyui.min.js"></script>
         <script type="text/javascript" src="js/events.js"></script>
     </head>
@@ -47,88 +47,88 @@
                 <a href="http://localhost/denta_admin2/" id="btnAdmin" href="#" class="easyui-linkbutton" iconCls="icon-tip" plain="true">Admin</a>
             </div>
         	</div> <!-- fin tab Recherche --> 
-            <div title="Patient" iconCls="icon-medecin" style="padding:5px;">  
+            <div title="Patient" iconCls="icon-man" style="padding:5px;">  
             <div id="pPatient" class="easyui-panel" title="Signalétique" style="width:878px;height:auto;padding:5px;">
             	<form id="frmPatient" method="post">
         		<table style="width:100%" border="0">
         			<tr>
         				<td align="right">SIS:</td>
-        				<td><input type="text" name="sis"  size="14"/></td>
+        				<td><input class="easyui-textbox" type="text" name="sis"  size="14"/></td>
         				<td align="right">Age:</td>
-        				<td><input type="text" name="age"  size="10"/></td>
+        				<td><input class="easyui-textbox" type="text" name="age"  size="10"/></td>
         				<td rowspan="7" valign="middle" align="center"><img src="./css/images/unknown_140.jpg" /></td>
         			</tr>
         			<tr>
         				<td align="right">Nom:</td>
-        				<td><input type="text" name="nom"  size="30"/></td>
+        				<td><input class="easyui-textbox" type="text" name="nom"  size="30"/></td>
         				<td align="right">Prénom:</td>
-        				<td><input type="text" name="prenom"  size="30"/></td>
+        				<td><input class="easyui-textbox" type="text" name="prenom"  size="30"/></td>
         			</tr>
         			<tr>
         				<td align="right">Prénom++:</td>
-        				<td><input type="text" name="prenomplus"  size="30"/></td>
+        				<td><input class="easyui-textbox" type="text" name="prenomplus"  size="30"/></td>
         				<td align="right">Nationalité:</td>
-        				<td><input type="text" name="nationalite"  size="30"/></td>
+        				<td><input class="easyui-textbox" type="text" name="nationalite"  size="30"/></td>
         			</tr>
         			<tr>
         				<td align="right">Date Naiss.:</td>
-        				<td><input type="text" name="date_naiss" size="30" /></td>
+        				<td><input class="easyui-textbox" type="text" name="date_naiss" size="30" /></td>
         				<td align="right">Lieu Naiss.:</td>
-        				<td><input type="text" name="lieu_naiss" size="30" /></td>
+        				<td><input class="easyui-textbox" type="text" name="lieu_naiss" size="30" /></td>
         			</tr>
         			<tr>
         				<td align="right">Adresse:</td>
-        				<td colspan="3"><input type="text" name="adresse" size="62"/></td>
+        				<td colspan="3"><input class="easyui-textbox" type="text" name="adresse" style="width: 550px"/></td>
          			</tr>
         			<tr>
         				<td align="right">CP.:</td>
-        				<td><input type="text" name="cp" size="30" /></td>
-        				<td>Commune:</td>
-        				<td><input type="text" name="commune" size="30" /></td>
+        				<td><input class="easyui-textbox" type="text" name="cp" size="30" /></td>
+        				<td align="right">Commune:</td>
+        				<td><input class="easyui-textbox" type="text" name="commune" size="30" /></td>
         			</tr>
         			<tr>
         				<td align="right">Tél. Fixe:</td>
-        				<td><input type="text" name="tel_fixe" size="30" /></td>
+        				<td><input class="easyui-textbox" type="text" name="tel_fixe" size="30" /></td>
         				<td align="right">Tél.gsm:</td>
-        				<td><input type="text" name="tel_gsm" size="30" /></td>
+        				<td><input class="easyui-textbox" type="text" name="tel_gsm" size="30" /></td>
         			</tr>
         			<tr>
         				<td align="right">Notes:</td>
-        				<td colspan="4"><textarea name="txtNotes" rows="4" cols="100%" ></textarea></td>
+        				<td colspan="4"><input class="easyui-textbox" name="txtNotes" data-options="multiline:true" style="height:60px;width: 800px"></input></td>
         			</tr>
         			<tr>
         				<td align="right">Médication:</td>
-        				<td colspan="4"><textarea name="txtMedic" rows="4" cols="100%" ></textarea></td>
+        				<td colspan="4"><input class="easyui-textbox" name="txtMedic" data-options="multiline:true" style="height:60px;width: 800px"></input></td>
         			</tr>        			
         			<tr>
-        				<td align="right" colspan="5"><a id="btnEditPatient" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">Enregistrer</a></td>
+        				<td align="right" colspan="5"><a id="btnEditPatient" href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true">Enregistrer</a></td>
         			</tr>        			
         		</table>
         		</form>
 		    </div>
     		</div> <!-- fin tab Patient -->            
-    		<div title="Soins" iconCls="icon-info" style="padding:5px;">  
+    		<div title="Soins" iconCls="icon-sum" style="padding:5px;">  
             <div id="pSoin" class="easyui-panel" title="Soin" style="width:878px;   height:320px;padding:5px;">
             <form id="frmSoin" method="post">
 			  <table width="100%" border="0" cellpadding="3" cellspacing="0">
 			 <tr>
 			    <td align="right">Date: </td>
-			    <td><input id="s_date" name="s_date" type="text" size="10" /></td>
+			    <td><input class="easyui-textbox" id="s_date" name="s_date" type="text" size="10" /></td>
 			    <td align="right">Inami: </td>
-			    <td><input type="text" name="inami_id"  size="30" /></td>
+			    <td><input class="easyui-textbox" type="text" name="inami_id"  size="30" /></td>
 			    <td align="right">Dent/Proth&#232;se: </td>
-			    <td align="right"><input type="text" name="s_dent"  size="10" /></td>
+			    <td><input class="easyui-textbox" type="text" name="s_dent"  size="10" /></td>
 			  </tr>
 			  <tr>
 			    <td align="right">Honoraire: </td>
-			    <td><input name="s_hono" align="right" type="text"  size="5" /> &#8364;</td>
+			    <td><input class="easyui-textbox" name="s_hono" align="right" type="text"  size="5" /> &#8364;</td>
 			    <td align="right">Mode: </td>
 			    <td align="left">
 			    	<input type="radio" name="s_pay" value="E" />Esp&#232;ce
 			       	<input type="radio" name="s_pay" value="V" />Virement
 			    </td>
 			    <td align="right">id: </td>
-			    <td><input name="s_id" align="right" type="text"  size="5" /></td>
+			    <td><input class="easyui-textbox" name="s_id" align="right" type="text"  size="5" /></td>
 			  </tr>
 			  <tr>
 			  	<td align="right">Dentiste:</td>
@@ -137,20 +137,23 @@
 			       	<input type="radio" name="s_dentiste" value="Z" />Zirbes
 				</td>
 			    <td align="right">sis: </td>
-			    <td><input id="sis_id" name="sis_id" align="right" type="text"  size="15" /></td>
+			    <td><input class="easyui-textbox" id="sis_id" name="sis_id" align="right" type="text"  size="15" /></td>
 			    <td align="right">ASD: </td>
-			    <td align="right" ><input name="s_asd" align="right" type="text" size="10" /></td>
+			    <td >
+			    	<input class="easyui-textbox" name="s_asd" align="right" type="text" size="10" />
+			    	<a id="btnAsd" href="#" class="easyui-linkbutton" iconCls="icon-help" plain="true"></a>
+			    </td>
 			  </tr>
 			  <tr>
 			  <td align="right" valign="top">Notes: </td>
-			  <td colspan="5"><textarea  name="s_rem" rows="4" cols="100%" ></textarea></td>
+			  <td colspan="5"><input class="easyui-textbox" name="s_rem" data-options="multiline:true" style="height:60px;width: 800px"></input></td>
 			  </tr>
 			  <tr>
 			  <td align="right" valign="top">Prescr: </td>
-			  <td colspan="5"><textarea name="s_medic" rows="4" cols="100%" ></textarea></td>
+			  <td colspan="5"><input class="easyui-textbox" name="s_medic" data-options="multiline:true" style="height:60px;width: 800px"></input></td>
 			  </tr>
         			<tr>
-        				<td align="right" colspan="6"><a id="btnEditSoin" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">Enregistrer</a></td>
+        				<td align="right" colspan="6"><a id="btnEditSoin" href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true">Enregistrer</a></td>
         			</tr>        			
 			</table>
 		    </div>
