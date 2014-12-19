@@ -55,7 +55,7 @@ $(document).ready(function(){
 			$('#pSoin').panel('setTitle',row.nom+" "+row.prenom+" - "+row.age+" ans");
 			$('#frmSoin').form('clear');
 			console.log(today);
-			$('#s_date').val(today);
+			$('#s_date').text(today);
 			$("input[name=s_pay]").val(['E']);
 			$("input[name=s_dentiste]").val(['Z']);
 			console.log(sis_id);
@@ -68,7 +68,6 @@ $(document).ready(function(){
 				"url": "php/get_photo.php?sis_id="+sis_id,
 				"type":"GET",
 				"success": function(data){
-					console.log(data);
 					$('#td_photo').html(data);
 			}
 		});			url='php/update_patient.php';
@@ -84,6 +83,38 @@ $(document).ready(function(){
 		}
 	});
 /******************* CRUD Patient  ***********************/
+	$('#btnAddEid').click(function(){
+		$('#frmPatient').form('clear');
+		$.ajax({
+			"url": "php/add_eid.php",
+			"type":"GET",
+			"success": function(data){
+				var result = eval('('+data+')');
+				if (result.success){
+					$('#dgPatients').datagrid('reload');
+				}else{
+					alert(result.msg);
+				}
+			}
+		});		
+	});
+
+	$('#btnEditEid').click(function(){
+		$.ajax({
+			"url": "php/update_eid.php?sis="+sis_id,
+			"type":"GET",
+			"success": function(data){
+				var result = eval('('+data+')');
+				if (result.success){
+					$('#frmPatient').form('reload');
+				}else{
+					alert(result.msg);
+				}
+			}
+		});		
+	});
+
+
 	$('#btnAddPatient').click(function(){
 		$('#frmPatient').form('clear');
 		url = 'php/save_patient.php';
@@ -125,7 +156,7 @@ $(document).ready(function(){
 		$("input[name=s_pay]").val(['E']);
 		$("input[name=s_dentiste]").val(['Z']);
 		console.log(sis_id);
-		$("input[name=sis_id]").val(sis_id);	
+		$('#sis_id').val(sis_id);	
 		url = 'php/save_soin.php';
 	});
 
