@@ -55,11 +55,12 @@ $(document).ready(function(){
 			$('#pSoin').panel('setTitle',row.nom+" "+row.prenom+" - "+row.age+" ans");
 			$('#frmSoin').form('clear');
 			console.log(today);
-			$('#s_date').text(today);
+			$('#s_date').textbox("setValue",today);
 			$("input[name=s_pay]").val(['E']);
 			$("input[name=s_dentiste]").val(['Z']);
 			console.log(sis_id);
-			$("input[name=sis_id]").val(sis_id);			
+			$('#sis_id').textbox("setValue",sis_id);	
+			$('#soin_asd').textbox("setValue","00*0000/00");	
 			url = 'php/save_soin.php';
 			/* patient */
 			$('#tt').tabs('select',1);
@@ -67,10 +68,10 @@ $(document).ready(function(){
 			$.ajax({
 				"url": "php/get_photo.php?sis_id="+sis_id,
 				"type":"GET",
-				"success": function(data){
-					$('#td_photo').html(data);
-			}
-		});			url='php/update_patient.php';
+				"success": function(data){$('#td_photo').html(data);}
+			});
+					url='php/update_patient.php';
+					url_s='php/save_soin.php';
 		}
 	});
 
@@ -79,7 +80,7 @@ $(document).ready(function(){
 			$('#frmSoin').form('load',row);
 			sis_id=row.sis_id;
 			console.log(sis_id);
-			url='php/update_soin.php';
+			url_s='php/update_soin.php';
 		}
 	});
 /******************* CRUD Patient  ***********************/
@@ -152,19 +153,21 @@ $(document).ready(function(){
 	$('#btnAddSoins').click(function(){
 		$('#frmSoin').form('clear');
 		console.log(today);
-		$('#s_date').val(today);
+		$('#s_date').textbox("setValue",today);
 		$("input[name=s_pay]").val(['E']);
 		$("input[name=s_dentiste]").val(['Z']);
 		console.log(sis_id);
-		$('#sis_id').val(sis_id);	
-		url = 'php/save_soin.php';
+		$('#sis_id').textbox("setValue",sis_id);	
+		$('#soin_asd').textbox("setValue","00*0000/00");	
+		url_s = 'php/save_soin.php';
 	});
 
 
 	$('#btnEditSoin').click(function(){
 		console.log("je sauve");
 		$('#frmSoin').form('submit',{
-			url: url,
+			url: url_s,
+			method:"POST",
 			onSubmit: function(){
 				console.log("je submit");
 				return $(this).form('validate');
@@ -186,6 +189,19 @@ $(document).ready(function(){
 
 		});
 	});
+	
+	$('#btnDeleteSoins').click(function (){
+		var row = $('#dgSoins').datagrid('getSelected');
+		if (row){
+			$.post('php/remove_soin.php',{s_id:row.s_id},function(result){
+						if (result.success){
+							$('#dgSoins').datagrid('reload');
+							$('#btnAddSoins').click();	
+						} 
+					},'json');
+				}
+		});
+
 
 	$('#btnAsd').click(function(){
 		$.ajax({
@@ -193,7 +209,7 @@ $(document).ready(function(){
 			"type":"GET",
 			"success": function(data){
 				console.log(data);
-				$("input[name=s_asd]").val(data);
+				$("#soin_asd").textbox("setValue",data);
 			}
 		});
 	});
