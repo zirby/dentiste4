@@ -45,7 +45,7 @@
             	<a id="btnAddPatient" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">ajouter un patient</a>
             	<a id="btnAddEid" href="#" class="easyui-linkbutton" iconCls="icon-eid" plain="true">EID</a>
                 Nom: <input id="txtNom" type="text" >Prénom: <input id="txtPrenom" type="text" >Téléphone: <input id="txtTel" type="text" >
-                <a href="http://localhost/denta_admin2/" id="btnAdmin" href="#" class="easyui-linkbutton" iconCls="icon-tip" plain="true">Admin</a>
+                <a href="http://localhost/denta_admin2/" id="btnAdmin" href="#" class="easyui-linkbutton" iconCls="icon-admin" plain="true">Admin</a>
             </div>
         	</div> <!-- fin tab Recherche --> 
             <div title="Patient" iconCls="icon-man" style="padding:5px;">  
@@ -118,7 +118,7 @@
 			  <table width="100%" border="0" cellpadding="3" cellspacing="0">
 			 <tr>
 			    <td align="right">Date: </td>
-			    <td><input class="easyui-textbox" id="s_date" name="s_date" type="text" size="10" /></td>
+			    <td><input class="easyui-textbox" id="s_date" name="s_date" type="text" size="15" /></td>
 			    <td align="right">Inami: </td>
 			    <td><input class="easyui-textbox" type="text" name="inami_id"  size="30" /></td>
 			    <td align="right">Dent/Proth&#232;se: </td>
@@ -126,7 +126,7 @@
 			  </tr>
 			  <tr>
 			    <td align="right">Honoraire: </td>
-			    <td><input class="easyui-textbox" name="s_hono" align="right" type="text"  size="5" /> &#8364;</td>
+			    <td><input class="easyui-textbox" id="s_hono" name="s_hono" align="right" type="text"  size="5" value="0" /> &#8364;</td>
 			    <td align="right">Mode: </td>
 			    <td align="left">
 			    	<input type="radio" name="s_pay" value="E" />Esp&#232;ce
@@ -145,7 +145,7 @@
 			    <td><input class="easyui-textbox" id="sis_id" name="sis_id" align="right" type="text"  size="15" /></td>
 			    <td align="right">ASD: </td>
 			    <td >
-			    	<input class="easyui-textbox" id="soin_asd" name="s_asd" value="00*0000/00" align="right" type="text" size="10" />
+			    	<input class="easyui-textbox" id="soin_asd" name="s_asd" value="00*0000/00" align="right" type="text" size="15" />
 			    	<a id="btnAsd" href="#" class="easyui-linkbutton" iconCls="icon-help" plain="true"></a>
 			    </td>
 			  </tr>

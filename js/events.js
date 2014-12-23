@@ -61,6 +61,7 @@ $(document).ready(function(){
 			console.log(sis_id);
 			$('#sis_id').textbox("setValue",sis_id);	
 			$('#soin_asd').textbox("setValue","00*0000/00");	
+			$('#s_hono').textbox("setValue","0");	
 			url = 'php/save_soin.php';
 			/* patient */
 			$('#tt').tabs('select',1);
@@ -158,7 +159,8 @@ $(document).ready(function(){
 		$("input[name=s_dentiste]").val(['Z']);
 		console.log(sis_id);
 		$('#sis_id').textbox("setValue",sis_id);	
-		$('#soin_asd').textbox("setValue","00*0000/00");	
+		$('#soin_asd').textbox("setValue","00*0000/00");
+		$('#s_hono').textbox("setValue","0");	
 		url_s = 'php/save_soin.php';
 	});
 
