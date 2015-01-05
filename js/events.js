@@ -50,7 +50,7 @@ $(document).ready(function(){
 			
 			/* soins */
 			$('#dgSoins').datagrid({
-				url:'php/get_soins.php?sis_id='+row.sis,
+				url:'php/get_soins.php?sis_id='+sis_id
 			});
 			$('#pSoin').panel('setTitle',row.nom+" "+row.prenom+" - "+row.age+" ans");
 			$('#frmSoin').form('clear');

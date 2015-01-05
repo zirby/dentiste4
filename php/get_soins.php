@@ -29,7 +29,7 @@
                         's_pay_le'=>$row->s_pay_le,
                         's_coul'=>$row->s_coul,
                         's_dentiste'=>$row->s_dentiste,
-                        's_medic'=>$row->s_medic,
+                        's_medic'=>utf8_encode($row->s_medic),
                         's_asd'=>$row->s_asd
                         );
         array_push($items, $myrow);
