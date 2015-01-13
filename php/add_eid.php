@@ -28,7 +28,7 @@ function securite_bdd($string){
 //$numnatfile='../data/'.$numnat.'.eid';
 $dir    = '../data';
 $files1 = scandir($dir);
-$numnatfile='../data/'.$files1[2];
+$numnatfile='../data/'.$files1[3];
 
 
 if (file_exists($numnatfile)) {

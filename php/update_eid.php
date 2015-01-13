@@ -6,13 +6,15 @@ $sis = isset($_GET['sis']) ? $_GET['sis'] : "1";
 
 $dir    = '../data';
 $files1 = scandir($dir);
-$numnatfile='../data/'.$files1[2];
+$numnatfile='../data/'.$files1[3];
+
+//echo $numnatfile;
 
 if (file_exists($numnatfile)) {
     $xml = simplexml_load_file($numnatfile);
 		$txtDateNaiss=(string)$xml->identity['dateofbirth'];
 		$txtSis=substr($txtDateNaiss, 0,2).(string)$xml->identity['nationalnumber'];
-		$sis=substr($txtDateNaiss, 0,2).$sis;
+		//$sis=substr($txtDateNaiss, 0,2).$sis;
 		$txtGender=(string)$xml->identity['gender'];
 		$txtNom=(string)$xml->identity->name;
 		$txtPrenom=(string)$xml->identity->firstname;
@@ -61,7 +63,7 @@ if (file_exists($numnatfile)) {
 
 	
 } else {
-	echo json_encode(array('msg'=>'Failed to open : '.$numnat));
+	echo json_encode(array('msg'=>'Failed to open : '.$numnatfile));
 }
 
 

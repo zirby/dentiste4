@@ -1,6 +1,6 @@
 <?php
 $dir    = '../data';
 $files1 = scandir($dir);
-$numnatfile=$files1[2];
+$numnatfile=$files1[3];
 echo $numnatfile;
 ?>
