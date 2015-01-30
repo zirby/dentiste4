@@ -216,6 +216,11 @@ $(document).ready(function(){
 		});
 	});
 
-	
+/******************* CRUD Radios  ***********************/	
+	$('#ff').form({
+        success:function(data){
+            $.messager.alert('Info', data, 'info');
+        }
+    });
 
 });
