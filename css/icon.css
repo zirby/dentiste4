@@ -67,6 +67,10 @@
 .icon-eid{
 	background:url('icons/logo_eid.png') no-repeat center center;
 }
+.icon-rx{
+	background:url('icons/x-ray.jpg') no-repeat center center;
+}
+
 .icon-admin{
 	background:url('icons/chart_bar.png') no-repeat center center;
 }
