@@ -1,41 +1,77 @@
 <?php
-$result = array();
-include 'conn.php';
-
-$sis_id = isset($_GET['sis_id']) ? $_GET['sis_id'] : 0;  
-
-if(isset($_FILES['files'])){
-    $errors= array();
-	foreach($_FILES['files']['tmp_name'] as $key => $tmp_name ){
-	    $file_name = $key.$_FILES['files']['name'][$key];
-		$file_name = $sis_id."-".$file_name;
-	    $file_size =$_FILES['files']['size'][$key];
-	    $file_tmp =$_FILES['files']['tmp_name'][$key];
-	    $file_type=$_FILES['files']['type'][$key];  
-	    if($file_size > 2097152){
-	        $errors[]='File size must be less than 2 MB';
-	    }       
-	    $query="INSERT into radios (SIS_ID,`FILE_NAME`,`FILE_SIZE`,`FILE_TYPE`) 
-	            VALUES($sis_id,'$file_name','$file_size','$file_type'); ";
-	
-	    $desired_dir="radios";
-	    if(empty($errors)==true){
-	        if(is_dir($desired_dir)==false){
-	            mkdir("$desired_dir", 0700);        // Create directory if it does not exist
-	        }
-	        if(is_dir("$desired_dir/".$file_name)==false){
-	            move_uploaded_file($file_tmp,"gallery/".$file_name);
-	        }else{                                  //rename the file if another one exist
-	            $new_dir="radios/".$file_name.time();
-	             rename($file_tmp,$new_dir) ;               
-	        }
-	        mysql_query($query) or die(mysql_error());          
-	    }else{
-				echo json_encode($errors);
-	    }
-	 }
-	if(empty($error)){
-	    echo json_encode(array('success'=>true));
-	}
+$target_dir = "../radios/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+$message="";
+if($check !== false) {
+	$message.="File is an image - " . $check["mime"] . ".";
+    $uploadOk = 1;
+} else {
+	$message.="File is not an image.";
+    $uploadOk = 0;
+}
+// Check if file already exists
+if (file_exists($target_file)) {
+	$message.="Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+	$message.="Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+	$message.="Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+	$message.="Sorry, your file was not uploaded.";
+	echo json_encode(array('success'=>FALSE,'message'=>$message));
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    	$message.="The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+		
+		// on se connecte à notre base de données
+		try
+		{
+		    $bdd = new PDO('mysql:host=localhost;dbname=radiodentaires', 'root', 'root');
+		}
+		catch (Exception $e)
+		{
+			$message.=$e->getMessage();
+		    die('Erreur : ' . $e->getMessage());
+		}
+		
+		if(!empty($_GET['name'])){ // si les variables ne sont pas vides
+		
+		    $name = $_GET['name'];
+		
+		    // puis on entre les données en base de données :
+		    $insertion = $bdd->prepare('INSERT INTO radios VALUES("", :name, :rxname, :rxsize, :rxtype)');
+		    $insertion->execute(array(
+		        'name' => $name,
+		        'rxname' => basename($_FILES["fileToUpload"]["name"]),
+		        'rxsize' => $_FILES["fileToUpload"]["size"],
+		        'rxtype' => $imageFileType
+		    ));
+			$message.= "Radio ".$name." saved !";
+		}else{
+			$message.= "Name is empty - Radio not saved";
+		}
+		
+		
+		
+		
+    	echo json_encode(array('success'=>TRUE,'message'=>$message));
+    } else {
+    	$message.="Sorry, there was an error uploading your file.";
+    	echo json_encode(array('success'=>FALSE,'message'=>$message));
+    }
 }
 ?>

@@ -1,3 +1,6 @@
 *.class
 *.pyc
 *.pyo
+db_bckp
+data
+radios

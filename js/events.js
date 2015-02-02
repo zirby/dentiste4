@@ -217,18 +217,24 @@ $(document).ready(function(){
 	});
 
 /******************* CRUD Radios  ***********************/	
+	$('#frmRadio').form( {
+	    url: "php/save_radio.php?name="+sis_id,
+	    onSubmit: function(){
+	        // do some check
+	        // return false to prevent submit;
+	    },
+	    success:function(data){
+	        var data = eval('(' + data + ')');  // change the JSON string to javascript object
+	        if (data.success){
+	            console.log(data.message);
+		    }else{
+		    	console.log(data.message);
+		    }
+		}
+	});
+	
 	$('#btnAddRadio').click(function(){
-		$.ajax({
-			"url": "php/test_radio.php",
-			"success": function(data){
-				var result = eval('('+data+')');
-				if (result.success){
-					console.log("success");
-				}else{
-					console.log(result.msg);
-				}
-			}
-		});		
+		$('#frmRadio').form('submit');
 	});
 
 });
