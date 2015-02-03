@@ -74,6 +74,12 @@ $(document).ready(function(){
 			});
 					url='php/update_patient.php';
 					url_s='php/save_soin.php';
+			/* radios */
+			$.ajax({
+				"url": "php/get_radios.php?sis_id="+sis_id,
+				"type":"GET",
+				"success": function(data){$('#pImgRadios').html(data);}
+			});
 		}
 	});
 
