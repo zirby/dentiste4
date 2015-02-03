@@ -185,7 +185,8 @@
     		</div> <!-- fin tab Soins -->
             <div title="Radios" iconCls="icon-rx" style="padding:5px;">  
             <div id="pRadios" class="easyui-panel" title="Radios" data-options="iconCls:'icon-rx'" style="width:878px;height:auto;padding:5px;">
-			<form id="frmRadio"  enctype="multipart/form-data">
+			<form id="frmRadio"  method="post" >
+				<input class="easyui-textbox" id="name" name="name" align="right" type="text"  size="15" />
 				<input name="fileToUpload" id="fileToUpload" class="f1 easyui-filebox">
 				<a id="btnAddRadio" href="#" class="easyui-linkbutton" iconCls="icon-add" >ajouter une radio</a>
 			</form>

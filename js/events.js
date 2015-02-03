@@ -60,6 +60,7 @@ $(document).ready(function(){
 			$("input[name=s_dentiste]").val(['Z']);
 			console.log(sis_id);
 			$('#sis_id').textbox("setValue",sis_id);	
+			$('#name').textbox("setValue",sis_id);
 			$('#soin_asd').textbox("setValue","00*0000/00");	
 			$('#s_hono').textbox("setValue","0");	
 			url = 'php/save_soin.php';
@@ -217,24 +218,27 @@ $(document).ready(function(){
 	});
 
 /******************* CRUD Radios  ***********************/	
-	$('#frmRadio').form( {
-	    url: "php/save_radio.php?name="+sis_id,
-	    onSubmit: function(){
-	        // do some check
-	        // return false to prevent submit;
-	    },
-	    success:function(data){
-	        var data = eval('(' + data + ')');  // change the JSON string to javascript object
-	        if (data.success){
-	            console.log(data.message);
-		    }else{
-		    	console.log(data.message);
-		    }
-		}
-	});
 	
 	$('#btnAddRadio').click(function(){
-		$('#frmRadio').form('submit');
+		console.log("je vais submiter");
+		$('#frmRadio').form('submit',{
+		    url: "php/save_radio.php",
+		    method:"POST",
+		    onSubmit: function(){
+		        console.log("je submit");
+		        // return false to prevent submit;
+		    },
+		    success:function(data){
+		    	console.log("je suis dans success");
+		        var data = eval('(' + data + ')');  // change the JSON string to javascript object
+		        if (data.success){
+		            console.log(data.message);
+			    }else{
+			    	console.log(data.message);
+			    }
+			}
+			
+		});
 	});
 
 });
