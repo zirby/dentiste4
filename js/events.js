@@ -227,6 +227,7 @@ $(document).ready(function(){
 	
 	$('#btnAddRadio').click(function(){
 		console.log("je vais submiter");
+		event.preventDefault();
 		$('#frmRadio').form('submit',{
 		    url: "php/save_radio.php",
 		    method:"POST",

@@ -11,7 +11,7 @@
 		while($row=mysql_fetch_object($res))
 		{
 			$image=$row->rxname;
-			 echo "<a href='radios/$image' target='_blank' ><img src='radios/$image' title='$image' class='easyui-tooltip' ></a>&nbsp;&nbsp;";
+			 echo "<img src='radios/$image' title='$image' class='easyui-tooltip' ><figcaption>$image</figcaption>";
 		}		
 	};
 
